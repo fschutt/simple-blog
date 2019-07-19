@@ -60,12 +60,12 @@ class User
         return $this;
     }
 
-    public function isAdmin(): ?bool
+    public function getIsAdmin(): ?bool
     {
         return $this->isAdmin;
     }
 
-    public function setAdmin(bool $isAdmin): self
+    public function setIsAdmin(bool $isAdmin): self
     {
         $this->isAdmin = $isAdmin;
 
