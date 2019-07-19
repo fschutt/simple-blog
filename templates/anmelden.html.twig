@@ -1,19 +1,20 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>Der Riotfive Blog - Anmelden</title>
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <link rel="stylesheet" type="text/css" href="./main.css" />
-</head>
-<body>
+{% extends 'base.html.twig' %}
+
+{% block title %}Der Riotfive Blog - Anmelden{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/main.css') }}" />
+{% endblock %}
+
+{% block body %}
     <header>
         <h1>Der Riotfive Blog - Anmelden</h1>
     </header>
 
     <aside>
         <ul>
-            <li><a href="./index.html">Startseite</a></li>
-            <li><a href="./registrieren.html">Registrieren</a></li>
+            <li><a href="{{ path('index') }}">Startseite</a></li>
+            <li><a href="{{ path('register') }}">Registrieren</a></li>
         </ul>
     </aside>
 
@@ -23,10 +24,8 @@
             <input name="login-name" type="text"></input>
             <label for="login-password">Passwort:</label>
             <input name="login-password" type="password"></input>
-            <a href="./passwort-vergessen.html">Passwort vergessen?</a>
+            <a href="{{ path('reset-password') }}">Passwort vergessen?</a>
             <button type="submit">Einloggen</button>
         </form>
     </main>
-
-</body>
-</html>
+{% endblock %}
