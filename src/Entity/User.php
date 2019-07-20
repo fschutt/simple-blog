@@ -148,6 +148,10 @@ class User implements UserInterface, EquatableInterface
             return false;
         }
 
+        if ($this->username !== $user->getUsername()) {
+            return false;
+        }
+
         if ($this->password !== $user->getPassword()) {
             return false;
         }
@@ -156,7 +160,7 @@ class User implements UserInterface, EquatableInterface
             return false;
         }
 
-        if ($this->username !== $user->getUsername()) {
+        if ($this->roles !== $user->getRoles()) {
             return false;
         }
 
