@@ -19,12 +19,14 @@ class UserFixture extends Fixture
     public function load(ObjectManager $manager)
     {
         // Create the admin account
-        $user = new User();
-        $user->setUsername('admin');
-        $user->setPassword($this->encoder->encodePassword($user, 'foo'));
-        $user->setIsAdmin(true);
-        $manager->persist($product);
+        $username = 'admin';
+        $email = 'hello@hello.com';
+        $password = 'foo';
+        $salt = 'salt'; // ????
+        $roles = ['admin'];
+        $user = new User($username, $email, $password, $salt, $roles);
 
+        $manager->persist($user);
         $manager->flush();
     }
 }
