@@ -1,29 +1,15 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Der Riotfive Blog - Anmelden{% endblock %}
+{% set page_title = 'Der Riotfive Blog - Passwort vergessen' %}
 
 {% block stylesheets %}
     <link rel="stylesheet" type="text/css" href="{{ asset('css/main.css') }}" />
 {% endblock %}
 
 {% block body %}
-<header>
-    <h1>Der Riotfive Blog - Passwort vergessen</h1>
-</header>
-
-<aside>
-    <ul>
-        <li><a href="{{ path('index') }}">Startseite</a></li>
-        <li><a href="{{ path('register') }}">Registrieren</a></li>
-        <li><a href="{{ path('login') }}">Anmelden</a></li>
-    </ul>
-</aside>
-
-<main>
-    <form>
-        <label for="forgot-password-email">E-Mail:</label>
-        <input type="text" name="forgot-password-email" />
-        <button type="submit">Neues Passwort anfordern</button>
-    </form>
-</main>
+<form method="post">
+    <label for="forgot-password-email">E-Mail:</label>
+    <input type="text" name="forgot-password-email" />
+    <button type="submit">Neues Passwort anfordern</button>
+</form>
 {% endblock %}

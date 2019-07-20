@@ -1,32 +1,19 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Der Riotfive Blog - Anmelden{% endblock %}
+{% set page_title = 'Der Riotfive Blog - Registrieren' %}
 
 {% block stylesheets %}
     <link rel="stylesheet" type="text/css" href="{{ asset('css/main.css') }}" />
 {% endblock %}
 
 {% block body %}
-<header>
-    <h1>Der Riotfive Blog - Registrieren</h1>
-</header>
-
-<aside>
-    <ul>
-        <li><a href="{{ path('index') }}">Startseite</a></li>
-        <li><a href="{{ path('login') }}">Anmelden</a></li>
-    </ul>
-</aside>
-
-<main>
-    <form method="post">
-        <label for="register-name">Benutzername:</label>
-        <input name="register-name" type="text"></input>
-        <label for="register-name">E-Mail:</label>
-        <input name="register-name" type="email"></input>
-        <label for="register-password">Passwort:</label>
-        <input name="register-password" type="password"></input>
-        <button type="submit">Registrieren</button>
-    </form>
-</main>
+<form method="post">
+    <label for="register-name">Benutzername:</label>
+    <input name="register-name" type="text"></input>
+    <label for="register-name">E-Mail:</label>
+    <input name="register-name" type="email"></input>
+    <label for="register-password">Passwort:</label>
+    <input name="register-password" type="password"></input>
+    <button type="submit">Registrieren</button>
+</form>
 {% endblock %}

@@ -1,31 +1,27 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Der Riotfive Blog - Anmelden{% endblock %}
+{% set page_title = 'Der Riotfive Blog - Anmelden' %}
 
 {% block stylesheets %}
     <link rel="stylesheet" type="text/css" href="{{ asset('css/main.css') }}" />
 {% endblock %}
 
 {% block body %}
-    <header>
-        <h1>Der Riotfive Blog - Anmelden</h1>
-    </header>
+    {% if error %}
+        <div><p>{{ error.messageKey|trans(error.messageData, 'security') }}</p></div>
+    {% endif %}
 
-    <aside>
-        <ul>
-            <li><a href="{{ path('index') }}">Startseite</a></li>
-            <li><a href="{{ path('register') }}">Registrieren</a></li>
-        </ul>
-    </aside>
+    <form method="post">
+        <label for="username">Benutzername oder E-Mail:</label>
+        <input name="username" type="text" required autofocus />
 
-    <main>
-        <form method="post">
-            <label for="login-name">Benutzername oder E-Mail:</label>
-            <input name="login-name" type="text"></input>
-            <label for="login-password">Passwort:</label>
-            <input name="login-password" type="password"></input>
-            <a href="{{ path('reset-password') }}">Passwort vergessen?</a>
-            <button type="submit">Einloggen</button>
-        </form>
-    </main>
+        <label for="password">Passwort:</label>
+        <input name="password" type="password" required />
+        <a href="{{ path('reset-password') }}">Passwort vergessen?</a>
+
+        <label><input type="checkbox" checked name="remember_me" />&nbsp;Permanent einloggen</label>
+
+        <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}" />
+        <button type="submit">Einloggen</button>
+    </form>
 {% endblock %}

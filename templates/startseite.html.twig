@@ -1,23 +1,12 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Der Riotfive Blog{% endblock %}
+{% set page_title = 'Der Riotfive Blog' %}
 
 {% block stylesheets %}
     <link rel="stylesheet" type="text/css" href="{{ asset('css/main.css') }}" />
 {% endblock %}
 
-{% block body %}
-<header>
-    <h1>Der Riotfive Blog</h1>
-</header>
-
-<aside>
-    <ul>
-        <li><a href="{{ path('register') }}">Registrieren</a></li>
-        <li><a href="{{ path('login') }}">Anmelden</a></li>
-    </ul>
-</aside>
-
+{% block navigation %}
 <section id="navigation">
     <form method="get">
         <input type="text" name="search-posts" placeholder="Posts durchsuchen..." />
@@ -28,17 +17,17 @@
         <button>&gt;</button>
     </div>
 </section>
+{% endblock %}
 
-<main>
+{% block body %}
     {% for entry in blog_entries %}
     <article>
          <header><h4>{{ entry.title }}</h4></header>
         <section><p>{{ entry.body }}</p></section>
     </article>
     {% endfor %}
-</main>
+{% endblock %}
 
-<footer>
+{% block footer %}
     <p>(C) riotfive</p>
-</footer>
 {% endblock %}

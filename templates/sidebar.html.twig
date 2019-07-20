@@ -1,0 +1,10 @@
+<ul>
+    <li><a href="{{ path('index') }}">Startseite</a></li>
+    {% if app.user %}
+    <li><a href="{{ path('blogentry-new') }}">Neuer Blogeintrag</a></li>
+    <li><a href="{{ path('blogentry-list') }}">Blogeinträge verwalten</a></li>
+    {% else %}
+    <li><a href="{{ path('login') }}">Anmelden</a></li>
+    <li><a href="{{ path('register') }}">Registrieren</a></li>
+    {% endif %}
+</ul>

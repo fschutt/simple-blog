@@ -1,12 +1,24 @@
+{% set page_title = 'Der Riotfive Blog' %}
+
 <!DOCTYPE html>
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>{% block title %}Der Riotfive Blog{% endblock %}</title>
+        <title>{{ page_title }}</title>
         {% block stylesheets %}{% endblock %}
     </head>
     <body>
-        {% block body %}{% endblock %}
+        <header>
+            <h1>{{ page_title }}</h1>
+        </header>
+        <aside>
+            {{ include('sidebar.html.twig') }}
+        </aside>
+        {% block navigation %}{% endblock %}
+        <main>
+            {% block body %}{% endblock %}
+        </main>
+        {% block footer %}{% endblock %}
         {% block javascripts %}{% endblock %}
     </body>
 </html>

@@ -6,6 +6,7 @@ use App\Entity\User;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Common\Persistence\ObjectManager;
 use Symfony\Component\Security\Core\Encoder\UserPasswordEncoderInterface;
+use Symfony\Component\Security\Core\Util\SecureRandom;
 
 class UserFixture extends Fixture
 {
@@ -19,12 +20,15 @@ class UserFixture extends Fixture
     public function load(ObjectManager $manager)
     {
         // Create the admin account
+        $random = new SecureRandom();
+        $salt = base64_encode($random->nextBytes(128 / 8)); // ????
+
         $username = 'admin';
         $email = 'hello@hello.com';
-        $password = 'foo';
-        $salt = 'salt'; // ????
-        $roles = ['admin'];
-        $user = new User($username, $email, $password, $salt, $roles);
+        $roles = ['ROLE_ADMIN'];
+
+        $user = new User($username, $email, '', $salt, $roles);
+        $user->setPassword($this->encoder->encodePassword($user, 'foo'));
 
         $manager->persist($user);
         $manager->flush();

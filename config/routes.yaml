@@ -11,6 +11,14 @@ login:
     path: /anmelden
     controller: App\Controller\LoginController::html
 
+app_login:
+    path: /login
+    controller: App\Controller\LoginController::login
+
+app_logout:
+    path: /logout
+    controller: App\Controller\LoginController::login
+
 blogentry-list:
     # admin-only!
     path: /blogeintraege-verwalten

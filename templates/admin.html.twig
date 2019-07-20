@@ -1,21 +1,7 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Der Riotfive Blog - Admin{% endblock %}
+{% set page_title = 'Der Riotfive Blog - Admin' %}
 
 {% block stylesheets %}
     <link rel="stylesheet" type="text/css" href="{{ asset('css/main.css') }}" />
-{% endblock %}
-
-{% block body %}
-<header>
-    <h1>Der Riotfive Blog - Admin-Bereich</h1>
-</header>
-
-<aside>
-    <ul>
-        <li><a href="{{ path('index') }}">Startseite</a></li>
-        <li><a href="{{ path('blogentry-new') }}">Neuer Blogeintrag</a></li>
-        <li><a href="{{ path('blogentry-list') }}">Blogeinträge verwalten</a></li>
-    </ul>
-</aside>
 {% endblock %}
