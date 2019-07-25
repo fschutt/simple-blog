@@ -7,13 +7,19 @@
 {% endblock %}
 
 {% block body %}
-<form method="post">
-    <label for="register-name">Benutzername:</label>
-    <input name="register-name" type="text"></input>
-    <label for="register-name">E-Mail:</label>
-    <input name="register-name" type="email"></input>
-    <label for="register-password">Passwort:</label>
-    <input name="register-password" type="password"></input>
-    <button type="submit">Registrieren</button>
-</form>
+
+    {% for error in errors %}
+    <div><p>{{ error.message }}</p></div>
+    {% endfor %}
+
+    <form method="post" name="registration_form">
+        <label for="registration_form_username">Benutzername:</label>
+        <input type="text" id="registration_form_username" name="registration_form[username]" required="required">
+        <label for="registration_form_email">E-Mail:</label>
+        <input type="email" id="registration_form_email" name="registration_form[email]" required="required">
+        <label for="registration_form_email">Passwort:</label>
+        <input type="password" id="registration_form_password" name="registration_form[password]" required="required">
+        <input type="hidden" name="registration_form[_token]" value="{{ csrf_token('authenticate') }}" />
+        <button type="submit">Registrieren</button>
+    </form>
 {% endblock %}

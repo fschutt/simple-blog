@@ -9,8 +9,13 @@ use Symfony\Component\Security\Http\Authentication\AuthenticationUtils;
 
 class LoginController extends AbstractController
 {
-    public function html(AuthenticationUtils $authenticationUtils): Response
+    public function login(AuthenticationUtils $authenticationUtils): Response
     {
+        if ($this->getUser()) {
+            // TODO: check if role == ROLE_ADMIN
+            $this->redirectToRoute('admin');
+        }
+
         // get the login error if there is one
         $error = $authenticationUtils->getLastAuthenticationError();
         // last username entered by the user
@@ -20,20 +25,6 @@ class LoginController extends AbstractController
             'last_username' => $lastUsername,
             'error' => $error
         ]);
-    }
-
-    public function login(AuthenticationUtils $authenticationUtils): Response
-    {
-        if ($this->getUser()) {
-           $this->redirectToRoute('admin');
-        }
-
-        // get the login error if there is one
-        $error = $authenticationUtils->getLastAuthenticationError();
-        // last username entered by the user
-        $lastUsername = $authenticationUtils->getLastUsername();
-
-        return $this->render('anmelden.html.twig', ['last_username' => $lastUsername, 'error' => $error]);
     }
 
     public function logout()

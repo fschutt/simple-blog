@@ -3,12 +3,14 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\UserInterface;
 use Symfony\Component\Security\Core\User\EquatableInterface;
 use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\UserRepository")
+ * @UniqueEntity(fields={"username"}, message="There is already an account with this username")
  */
 class User implements UserInterface, EquatableInterface
 {
@@ -48,32 +50,27 @@ class User implements UserInterface, EquatableInterface
     /**
      * @var string
      * @Assert\NotNull()
+     * @Assert\Length(
+     *      min = 8,
+     *      max = 50,
+     *      minMessage = "Your password must be at least {{ limit }} characters long",
+     *      maxMessage = "Your password cannot be longer than {{ limit }} characters"
+     * )
      * @ORM\Column(type="string", length=4096)
      */
     private $password;
 
     /**
      * @var string
-     * @Assert\NotNull()
      * @ORM\Column(type="string", length=4096)
      */
     private $salt;
 
     /**
      * @var array
-     * @Assert\NotNull()
      * @ORM\Column(type="json", length=4096)
      */
     private $roles;
-
-    public function __construct(string $username, string $email, string $password, string $salt, array $roles)
-    {
-        $this->username = $username;
-        $this->email = $email;
-        $this->password = $password;
-        $this->salt = $salt;
-        $this->roles = $roles;
-    }
 
     public function getId(): ?int
     {
@@ -124,15 +121,17 @@ class User implements UserInterface, EquatableInterface
         return $this->salt;
     }
 
+    public function setSalt(string $salt): self
+    {
+        $this->salt = $salt;
+
+        return $this;
+    }
+
     // Necessary for Interface "UserInterface"
     public function getRoles(): ?array
     {
         return $this->roles;
-    }
-
-    // Necessary for Interface "UserInterface"
-    public function eraseCredentials()
-    {
     }
 
     public function setRoles(array $roles): self
@@ -140,6 +139,11 @@ class User implements UserInterface, EquatableInterface
         $this->roles = $roles;
 
         return $this;
+    }
+
+    // Necessary for Interface "UserInterface"
+    public function eraseCredentials()
+    {
     }
 
     public function isEqualTo(UserInterface $user)

@@ -9,15 +9,11 @@ admin:
 
 login:
     path: /anmelden
-    controller: App\Controller\LoginController::html
-
-app_login:
-    path: /login
     controller: App\Controller\LoginController::login
 
 app_logout:
     path: /logout
-    controller: App\Controller\LoginController::login
+    controller: App\Controller\LoginController::logout
 
 blogentry-list:
     # admin-only!
@@ -35,7 +31,7 @@ reset-password:
 
 register:
     path: /registrieren
-    controller: App\Controller\RegisterController::html
+    controller: App\Controller\RegisterController::register
 
 search:
     path: /s={search}
