@@ -36,3 +36,7 @@ register:
 search:
     path: /s={search}
     controller: App\Controller\SearchController::html
+
+blogentry:
+    path: /p/{slug}
+    controller: App\Controller\BlogEntryController::html

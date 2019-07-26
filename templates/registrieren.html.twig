@@ -19,7 +19,7 @@
         <input type="email" id="registration_form_email" name="registration_form[email]" required="required">
         <label for="registration_form_email">Passwort:</label>
         <input type="password" id="registration_form_password" name="registration_form[password]" required="required">
-        <input type="hidden" name="registration_form[_token]" value="{{ csrf_token('authenticate') }}" />
+        {{ form_row(registrationForm._token) }}
         <button type="submit">Registrieren</button>
     </form>
 {% endblock %}

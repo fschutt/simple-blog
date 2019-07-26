@@ -12,26 +12,32 @@ class HomepageController extends AbstractController
         $blog_entries = [
             (object)[
                 'title' => 'Hallo Welt!',
+                'link' => '2019-07-25/hallo-welt-1',
+                'body' => 'Lorem ipsum dolor sit amet',
+            ],
+            (object)[
+                'title' => 'Hallo Welt!',
+                'link' => '2019-07-25/hallo-welt-2',
+                'body' => 'Lorem ipsum dolor sit amet',
+            ],
+            (object)[
+                'title' => 'Hallo Welt!',
+                'link' => '2019-07-25/hallo-welt-3',
+                'body' => 'Lorem ipsum dolor sit amet',
+            ],
+            (object)[
+                'title' => 'Hallo Welt!',
+                'link' => '2019-06/hallo-welt-4',
                 'body' => 'Body',
             ],
             (object)[
                 'title' => 'Hallo Welt!',
+                'link' => '2019-07-25/hallo-welt-5',
                 'body' => 'Body',
             ],
             (object)[
                 'title' => 'Hallo Welt!',
-                'body' => 'Body',
-            ],
-            (object)[
-                'title' => 'Hallo Welt!',
-                'body' => 'Body',
-            ],
-            (object)[
-                'title' => 'Hallo Welt!',
-                'body' => 'Body',
-            ],
-            (object)[
-                'title' => 'Hallo Welt!',
+                'link' => '2019-07-25/hallo-welt-6',
                 'body' => 'Body',
             ],
         ];

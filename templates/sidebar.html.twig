@@ -3,6 +3,7 @@
     {% if app.user %}
     <li><a href="{{ path('blogentry-new') }}">Neuer Blogeintrag</a></li>
     <li><a href="{{ path('blogentry-list') }}">Blogeinträge verwalten</a></li>
+    <li><a href="{{ path('app_logout') }}">Abmelden</a></li>
     {% else %}
     <li><a href="{{ path('login') }}">Anmelden</a></li>
     <li><a href="{{ path('register') }}">Registrieren</a></li>
