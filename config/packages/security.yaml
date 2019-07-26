@@ -38,6 +38,7 @@ security:
     # Note: Only the *first* access control that matches will be used
     access_control:
         # TODO: Migrate to routes instead of paths!
+        - { path: ^/login$, roles: IS_AUTHENTICATED_ANONYMOUSLY }
         - { path: ^/admin, roles: ROLE_ADMIN }
         - { path: ^/blogeintraege-verwalten, roles: ROLE_ADMIN }
         - { path: ^/neuer-eintrag, roles: ROLE_ADMIN }

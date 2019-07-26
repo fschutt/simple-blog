@@ -22,14 +22,9 @@
 {% block body %}
     {% for entry in blog_entries %}
     <article>
-         <header>
-            <a href="/p/{{ entry.link }}">
-                <h4>{{ entry.title }}</h4>
-            </a>
-            </header>
+         <header><h4>{{ entry.title }}</h4></header>
         <section>
-            <p>{{ entry.body }}</p>
-            &nbsp;...&nbsp;<a href="/p/{{ entry.link }}">Weiter lesen...</a>
+            <p>{{ entry.body }}...&nbsp;<a href="/p/{{ entry.link }}">Mehr</a></p>
         </section>
     </article>
     {% endfor %}
