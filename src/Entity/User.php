@@ -2,6 +2,8 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Security\Core\User\UserInterface;
@@ -71,6 +73,16 @@ class User implements UserInterface, EquatableInterface
      * @ORM\Column(type="json", length=4096)
      */
     private $roles;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\BlogEntry", mappedBy="created_by", orphanRemoval=true)
+     */
+    private $blogEntries;
+
+    public function __construct()
+    {
+        $this->blogEntries = new ArrayCollection();
+    }
 
     public function getId(): ?int
     {
@@ -169,5 +181,36 @@ class User implements UserInterface, EquatableInterface
         }
 
         return true;
+    }
+
+    /**
+     * @return Collection|BlogEntry[]
+     */
+    public function getBlogEntries(): Collection
+    {
+        return $this->blogEntries;
+    }
+
+    public function addBlogEntry(BlogEntry $blogEntry): self
+    {
+        if (!$this->blogEntries->contains($blogEntry)) {
+            $this->blogEntries[] = $blogEntry;
+            $blogEntry->setCreatedBy($this);
+        }
+
+        return $this;
+    }
+
+    public function removeBlogEntry(BlogEntry $blogEntry): self
+    {
+        if ($this->blogEntries->contains($blogEntry)) {
+            $this->blogEntries->removeElement($blogEntry);
+            // set the owning side to null (unless already changed)
+            if ($blogEntry->getCreatedBy() === $this) {
+                $blogEntry->setCreatedBy(null);
+            }
+        }
+
+        return $this;
     }
 }
