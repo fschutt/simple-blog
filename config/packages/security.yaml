@@ -1,26 +1,32 @@
 security:
+
     encoders:
         App\Entity\User:
             algorithm: auto
-    # https://symfony.com/doc/current/security.html#where-do-users-come-from-user-providers
+
     providers:
-        in_memory: { memory: ~ }
         app_user_provider:
             entity:
                 class: App\Entity\User
+
     firewalls:
         dev:
             pattern: ^/(_(profiler|wdt)|css|images|js)/
             security: false
         main:
+            pattern:  ^/
             provider: app_user_provider
-            anonymous: true
+            anonymous: ~
             guard:
                 authenticators:
                     - App\Security\LoginFormAuthenticator
+            form_login:
+                login_path: login
+                check_path: login
+                username_parameter: "login_form[username]"
+                password_parameter: "login_form[password]"
             logout:
                 path: app_logout
-                # where to redirect after logout
                 target: login
             remember_me:
                 secret:   '%kernel.secret%'
@@ -28,11 +34,6 @@ security:
                 path:     /
                 samesite: strict
                 remember_me_parameter: remember_me
-            # activate different ways to authenticate
-            # https://symfony.com/doc/current/security.html#firewalls-authentication
-
-            # https://symfony.com/doc/current/security/impersonating_user.html
-            # switch_user: true
 
     # Easy way to control access for large sections of your site
     # Note: Only the *first* access control that matches will be used
@@ -42,3 +43,4 @@ security:
         - { path: ^/admin, roles: ROLE_ADMIN }
         - { path: ^/blogeintraege-verwalten, roles: ROLE_ADMIN }
         - { path: ^/neuer-eintrag, roles: ROLE_ADMIN }
+        - { path: ^/*.$, roles: IS_AUTHENTICATED_ANONYMOUSLY }

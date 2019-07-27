@@ -160,7 +160,7 @@ class User implements UserInterface, EquatableInterface
 
     public function isEqualTo(UserInterface $user)
     {
-        if (!$user instanceof User) {
+        if (!($user instanceof User)) {
             return false;
         }
 
@@ -168,17 +168,17 @@ class User implements UserInterface, EquatableInterface
             return false;
         }
 
-        if ($this->password !== $user->getPassword()) {
-            return false;
-        }
+        // if ($this->password !== $user->getPassword()) {
+        //     return false;
+        // }
 
-        if ($this->salt !== $user->getSalt()) {
-            return false;
-        }
+        // if ($this->salt !== $user->getSalt()) {
+        //     return false;
+        // }
 
-        if ($this->roles !== $user->getRoles()) {
-            return false;
-        }
+        // if ($this->roles !== $user->getRoles()) {
+        //     return false;
+        // }
 
         return true;
     }

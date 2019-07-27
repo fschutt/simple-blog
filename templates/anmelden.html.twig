@@ -13,10 +13,10 @@
 
     <form method="post">
         <label for="username">Benutzername oder E-Mail:</label>
-        <input name="login_form[username]" type="text" required autofocus value={{ last_username }}/>
+        <input id="login_form_username"  name="login_form[username]" type="text" required autofocus value="{{ last_username }}"/>
 
-        <label for="password">Passwort:</label>
-        <input name="password" type="password" required />
+        <label for="login_form_password">Passwort:</label>
+        <input id="login_form_password" name="login_form[password]" type="password" required />
         <a href="{{ path('reset-password') }}">Passwort vergessen?</a>
 
         <label><input type="checkbox" checked name="remember_me" />&nbsp;Permanent einloggen</label>
