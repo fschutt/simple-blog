@@ -40,3 +40,4 @@ search:
 blogentry:
     path: /p/{slug}
     controller: App\Controller\BlogEntryController::html
+    requirements: { "slug": ".+" }

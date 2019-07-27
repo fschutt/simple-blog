@@ -2,6 +2,10 @@
 
 {% block title %}Hello BlogEntryController!{% endblock %}
 
+{% block stylesheets %}
+    <link rel="stylesheet" type="text/css" href="{{ asset('css/main.css') }}" />
+{% endblock %}
+
 {% block body %}
-<h1>Hello {{ slug }}!</h1>
+    <h1>Hello {{ slug }}!</h1>
 {% endblock %}

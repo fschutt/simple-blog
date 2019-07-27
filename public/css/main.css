@@ -9,8 +9,9 @@ body, html {
 }
 
 body {
-    max-width: 1000px;
-    margin: 0 auto;
+    max-width: 995px;
+    margin: 0px auto;
+    padding: 0px 5px;
 }
 
 body > header {
@@ -75,7 +76,7 @@ body > main {
 body > main > article {
     border-bottom: 1px solid black;
     line-height: 1.2;
-    padding: 10px 5px;
+    padding: 10px 0px;
 }
 
 body > main > article > header {
