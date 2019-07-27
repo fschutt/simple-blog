@@ -22,14 +22,13 @@
 {% block body %}
     {% for entry in blog_entries %}
     <article>
-         <header><h4>{{ entry.title }}</h4></header>
-        <section>
-            <p>{{ entry.body }}...&nbsp;<a href="/p/{{ entry.link }}">Mehr</a></p>
-        </section>
+        <header><h3>{{ entry.title }}</h3></header>
+        <main><p>{{ entry.body }}</p></main>
+        <footer><a href="/p/{{ entry.link }}">Mehr</a></footer>
     </article>
     {% endfor %}
 {% endblock %}
 
 {% block footer %}
-    <p>(C) riotfive</p>
+    <footer><p>(C) riotfive</p></footer>
 {% endblock %}

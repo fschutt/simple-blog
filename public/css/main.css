@@ -9,70 +9,88 @@ body, html {
 }
 
 body {
-    max-width: 1200px;
+    max-width: 1000px;
     margin: 0 auto;
 }
 
-header {
+body > header {
     padding: 10px 0px;
 }
 
-aside {
+body > aside {
     margin: 10px 0px;
 }
 
-section#navigation div {
+body > section#navigation div {
     float: right;
     margin-right: 10px;
 }
 
-section#navigation div button {
+body > section#navigation div button {
     width: 20px;
 }
 
-section#navigation {
+body > section#navigation {
     width: 100%;
 }
 
-section#navigation * {
+body > section#navigation * {
     display: inline-block;
 }
 
-form, form > * {
+body > main > form, body > main > form > * {
     display: block;
+    line-height: 1.2;
 }
 
-aside ul li {
+body > main > form button {
+    margin-top: 10px;
+}
+
+body > main > form textarea {
+
+}
+
+body > aside ul li {
     display: inline-block;
     margin-right: 10px;
 }
 
-aside ul {
+body > aside ul {
     list-style-type: none;
 }
 
-table {
+body > table {
     width: 100%;
 }
 
-table * {
+body > table * {
     text-align: left;
 }
 
-article {
-    border-bottom: 1px solid black;
-    padding-bottom: 10px;
+body > main {
+    padding: 10px 0px;
 }
 
-footer {
+body > main > article {
+    border-bottom: 1px solid black;
+    line-height: 1.2;
+    padding: 10px 5px;
+}
+
+body > main > article > header {
+
+}
+
+body > main > article > main {
+
+}
+
+body > main > article > footer {
+    margin-top: 5px;
+}
+
+body > footer > p {
     padding: 5px;
     font-size: 12px;
-}
-
-form button {
-    margin-top: 10px;
-}
-
-form textarea {
-
 }
