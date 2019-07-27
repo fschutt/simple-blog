@@ -15,41 +15,11 @@ body {
 }
 
 body > header {
-    padding: 10px 0px;
+    margin: 10px 0px;
 }
 
 body > aside {
     margin: 10px 0px;
-}
-
-body > section#navigation div {
-    float: right;
-    margin-right: 10px;
-}
-
-body > section#navigation div button {
-    width: 20px;
-}
-
-body > section#navigation {
-    width: 100%;
-}
-
-body > section#navigation * {
-    display: inline-block;
-}
-
-body > main > form, body > main > form > * {
-    display: block;
-    line-height: 1.2;
-}
-
-body > main > form button {
-    margin-top: 10px;
-}
-
-body > main > form textarea {
-
 }
 
 body > aside ul li {
@@ -61,6 +31,33 @@ body > aside ul {
     list-style-type: none;
 }
 
+body > section#navigation {
+    width: 100%;
+    margin: 10px 0px;
+}
+
+body > section#navigation * {
+    display: inline-block;
+}
+
+body > section#navigation div {
+    float: right;
+    margin-right: 10px;
+}
+
+body > section#navigation div button {
+    width: 20px;
+}
+
+body > main > form, body > main > form > * {
+    display: block;
+    line-height: 1.2;
+}
+
+body > main > form button {
+    margin-top: 10px;
+}
+
 body > table {
     width: 100%;
 }
@@ -70,21 +67,23 @@ body > table * {
 }
 
 body > main {
-    padding: 10px 0px;
+    margin-bottom: 10px;
 }
 
 body > main > article {
     border-bottom: 1px solid black;
     line-height: 1.2;
-    padding: 10px 0px;
-}
-
-body > main > article > header {
-
+    margin: 10px 0px;
+    padding-bottom: 10px;
 }
 
 body > main > article > main {
-
+    -webkit-hyphens: auto;
+    -moz-hyphens: auto;
+    -ms-hyphens: auto;
+    -o-hyphens: auto;
+    word-break:break-word;
+    hyphens: auto;
 }
 
 body > main > article > footer {
